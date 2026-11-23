@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experimento de desconto social</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="root">
+    <main id="panel" class="panel" aria-live="polite">
+      <h1>Experimento de desconto social</h1>
+      <p>Você tomará decisões hipotéticas. Não há pagamentos reais.</p>
+      <p>O formulário coleta um código de participante, gênero, faixa etária e se é criança. Use um código sem seu nome. Os dados serão baixados neste navegador; não são enviados automaticamente ao pesquisador.</p>
+      <form id="start-form">
+        <label for="participant">Código do participante</label>
+        <input id="participant" required maxlength="32" pattern="[A-Za-z0-9_-]+" autocomplete="off" placeholder="Ex.: P042">
+        <p class="hint">Apenas letras, números, hífen e sublinhado.</p>
+        <label for="gender">Gênero</label>
+        <select id="gender" required>
+          <option value="" selected disabled>Selecione uma opção</option>
+          <option value="feminino">Feminino</option>
+          <option value="masculino">Masculino</option>
+          <option value="nao_binario_outro">Não binário / outro</option>
+          <option value="prefere_nao_informar">Prefiro não informar</option>
+        </select>
+        <label for="age-group">Faixa etária</label>
+        <select id="age-group" required>
+          <option value="" selected disabled>Selecione uma opção</option>
+          <option value="abaixo_25">Abaixo de 25 anos</option>
+          <option value="acima_25">Acima de 25 anos</option>
+        </select>
+        <label for="is-child">É criança?</label>
+        <select id="is-child" required>
+          <option value="" selected disabled>Selecione uma opção</option>
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
+        </select>
+        <button type="submit" id="start" disabled>Iniciar em tela cheia</button>
+      </form>
+      <p id="load-error" class="error" role="alert" hidden></p>
+    </main>
+    <div id="trial-controls" hidden>
+      <button id="left-choice" class="choice-hit left" aria-label="Escolher opção da esquerda"></button>
+      <button id="right-choice" class="choice-hit right" aria-label="Escolher opção da direita"></button>
+      <button id="reset-choice" class="reset-choice">Reset</button>
+    </div>
+    <div id="toolbar" hidden>
+      <button id="save">Baixar dados parciais</button>
+      <button id="stop">Encerrar experimento</button>
+    </div>
+  </div>
+  <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+  <script type="module" src="experiment.mjs"></script>
+</body>
+</html>
